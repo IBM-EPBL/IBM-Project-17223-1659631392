@@ -22,8 +22,9 @@
     <!-- Style -->
     <link rel="stylesheet" href="../static/home/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/upload.css">
 
-    <title>IBM Home</title>
+    <title>IBM Upload</title>
     <link rel="icon" type="image/png" href="../static/images/icons/logo.ico"/>
   </head>
   <body style="overflow: hidden;">
@@ -51,9 +52,9 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{{ url_for('home') }}"><span>Home</span></a></li>
-                <li><a href="{{ url_for('upload') }}"><span>Upload</span></a></li>
-                <li><a href="{{ url_for('profile') }}"><span>Profile</span></a></li>
+                <li><a href="{{ url_for('home') }}"><span>Home</span></a></li>
+                <li class="active"><a><span>Upload</span></a></li>
+                <li><a href="contact.html"><span>Profile</span></a></li>
                 <li><a href="{{ url_for('logout') }}"><span>Logout</span></a></li>
               </ul>
             </nav>
@@ -70,7 +71,31 @@
 
     <div class="hero" style="background-image: url('../static/images/Healthy_food.jpg'); filter: blur(2px); filter: brightness(50%);"></div>
 
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<div class="file-upload">
+    <form action="{{ url_for('upload') }}" enctype="multipart/form-data" method="POST">
+        <input type="text" name="URloftheImage" placeholder="url of the image" style="width: 100%;
+        font-family: cursive;text-align: center;">
+        <br></br>
+        <button class="file-upload-btn" type="submit">Fetch Results</button>
+        <br></br>
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
 
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' name="imageFetched" onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>Drag and drop a file or select add Image. {{ error }}</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="submit" onclick="removeUpload()" class="send-image">Request Nutrients</span></button>
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+  </form>
+</div>
 
     <script src="../static/home/js/jquery-3.3.1.min.js"></script>
     <script src="../static/home/js/popper.min.js"></script>
@@ -78,6 +103,7 @@
     <script src="../static/home/js/jquery.sticky.js"></script>
     <script src="../static/home/js/main.js"></script>
     <script src="../static/js/home.js"></script>
+    <script src="../static/js/upload.js"></script>
 
   </body>
 </html>

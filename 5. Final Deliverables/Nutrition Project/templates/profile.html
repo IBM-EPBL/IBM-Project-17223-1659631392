@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../static/home/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/home.css">
 
-    <title>IBM Home</title>
+    <title>IBM Profile</title>
     <link rel="icon" type="image/png" href="../static/images/icons/logo.ico"/>
   </head>
   <body style="overflow: hidden;">
@@ -51,18 +51,16 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{{ url_for('home') }}"><span>Home</span></a></li>
+                <li><a href="{{ url_for('home') }}"><span>Home</span></a></li>
                 <li><a href="{{ url_for('upload') }}"><span>Upload</span></a></li>
-                <li><a href="{{ url_for('profile') }}"><span>Profile</span></a></li>
+                <li class="active"><a href=""><span>Profile</span></a></li>
                 <li><a href="{{ url_for('logout') }}"><span>Logout</span></a></li>
               </ul>
             </nav>
           </div>
 
           <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
           </div>
-
         </div>
       </div>
       
