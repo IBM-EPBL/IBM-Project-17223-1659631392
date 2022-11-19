@@ -5,6 +5,7 @@ function readURL(input) {
   
       reader.onload = function(e) {
         $('.image-upload-wrap').hide();
+        $('.file-upload-loading').hide();
   
         $('.file-upload-image').attr('src', e.target.result);
         $('.file-upload-content').show();
@@ -22,8 +23,17 @@ function readURL(input) {
   function removeUpload() {
     $('.file-upload-input').replaceWith($('.file-upload-input').clone());
     $('.file-upload-content').hide();
+    $('.file-upload-loading').hide();
     $('.image-upload-wrap').show();
   }
+  
+  function loadScreen() {
+    $('.file-upload-input').replaceWith($('.file-upload-loading').clone());
+    $('.file-upload-content').hide();
+    $('.image-upload-wrap').hide();
+    $('.file-upload-loading').show();
+  }
+
   $('.image-upload-wrap').bind('dragover', function () {
       $('.image-upload-wrap').addClass('image-dropping');
     });

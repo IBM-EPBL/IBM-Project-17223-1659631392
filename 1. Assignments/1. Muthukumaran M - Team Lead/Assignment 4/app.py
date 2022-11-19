@@ -20,7 +20,7 @@ app=Flask(__name__)
 @app.route('/')
 def index():
   try:
-        files = cos.Bucket('hospital-flask').objects.all()
+        files = cos.Bucket('foodbucket').objects.all()
         files_names = []
         for file in files:
             files_names.append(file.key)
@@ -28,9 +28,6 @@ def index():
             print("Item: {0} ({1} bytes).".format(file.key, file.size))
         return render_template('index.html',files=files_names)
         
-  except ClientError as be:
-        print("CLIENT ERROR: {0}\n".format(be))
-        return render_template('index.html')
   except Exception as e:
         print("Unable to retrieve bucket contents: {0}".format(e))
         return render_template('index.html')

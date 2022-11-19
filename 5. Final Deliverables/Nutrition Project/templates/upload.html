@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/home/css/bootstrap.min.css">
@@ -24,8 +26,76 @@
     <link rel="stylesheet" type="text/css" href="../static/css/home.css">
     <link rel="stylesheet" type="text/css" href="../static/css/upload.css">
 
+    <link rel="javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+
     <title>IBM Upload</title>
     <link rel="icon" type="image/png" href="../static/images/icons/logo.ico"/>
+    <script>
+      function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+    
+  } else {
+    preview.src = "not working";
+  }
+}
+    </script>
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "6ab36d7d-b59e-4964-bc8a-44cb324ca125", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "04f4c174-6106-47a5-8a6f-71ef403473e3", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
+    <style>
+      html{
+        background-color: black !important;
+      }
+      .btn-primary:disabled {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+
+
+
+.spinner-button:hover {
+    background-color: #000;
+    border: 2px solid #000;
+    color: #fff 
+}
+
+.spinner-button i {
+    color: #fff
+} 
+
+.spinner-button:hover i {
+    color: #fff
+}
+
+.fa{
+    color:#fff;
+}
+
+.fa:hover{
+    color:#fff;
+}
+    </style>
   </head>
   <body style="overflow: hidden;">
 
@@ -72,37 +142,35 @@
     <div class="hero" style="background-image: url('../static/images/Healthy_food.jpg'); filter: blur(2px); filter: brightness(50%);"></div>
 
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <form action="{{ url_for('uploader') }}" enctype="multipart/form-data" method="POST">
 <div class="file-upload">
-    <form action="{{ url_for('upload') }}" enctype="multipart/form-data" method="POST">
-        <input type="text" name="URloftheImage" placeholder="url of the image" style="width: 100%;
-        font-family: cursive;text-align: center;">
+      <!-- <input type='file' name="file" id="file" onchange="readURL(this);" accept="image/*" style="width: 100%;
+      font-family: cursive;text-align: center;"/>
         <br></br>
         <button class="file-upload-btn" type="submit">Fetch Results</button>
-        <br></br>
+        <br></br> -->
   <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-
   <div class="image-upload-wrap">
-    <input class="file-upload-input" type='file' name="imageFetched" onchange="readURL(this);" accept="image/*" />
+    <input class="file-upload-input" type='file' name="file" onchange="readURL(this);" accept="image/*" />
     <div class="drag-text">
-      <h3>Drag and drop a file or select add Image. {{ error }}</h3>
+      <h3>{{ error }}</h3>
     </div>
   </div>
   <div class="file-upload-content">
     <img class="file-upload-image" src="#" alt="your image" />
     <div class="image-title-wrap">
-      <button type="submit" onclick="removeUpload()" class="send-image">Request Nutrients</span></button>
+      <button type="submit" onclick="loading();" id="btnFetch" class="spinner-button btn btn-primary mb-2">Request Nutrients</span></button>
       <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
     </div>
   </div>
-  </form>
 </div>
-
+</form>
+    
     <script src="../static/home/js/jquery-3.3.1.min.js"></script>
     <script src="../static/home/js/popper.min.js"></script>
     <script src="../static/home/js/bootstrap.min.js"></script>
     <script src="../static/home/js/jquery.sticky.js"></script>
     <script src="../static/home/js/main.js"></script>
-    <script src="../static/js/home.js"></script>
     <script src="../static/js/upload.js"></script>
 
   </body>
