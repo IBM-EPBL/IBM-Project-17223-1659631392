@@ -1,9 +1,8 @@
-# Welcome to the FabrikamTFVC
-----------
-The team project contains the resources for the Fabrikam Software & Services. 
+# IBM Nutrtion Assistant Application
 
-## Contacts
----
+The team project contains the resources for Nutrtion Application Setup & Development Details
+
+## TEAM
 * Team Leader - Muthukumaran 
 * Memeber 1   - Preeti
 * Memeber 2   - Madhumitha
