@@ -1,0 +1,87 @@
+{
+  "status": "success",
+  "nutrition": {
+    "recipesUsed": 25,
+    "calories": {
+      "value": 349.0,
+      "unit": "calories",
+      "confidenceRange95Percent": { "min": 293.5, "max": 446.78 },
+      "standardDeviation": 195.52
+    },
+    "fat": {
+      "value": 9.0,
+      "unit": "g",
+      "confidenceRange95Percent": { "min": 7.11, "max": 19.03 },
+      "standardDeviation": 15.2
+    },
+    "protein": {
+      "value": 12.0,
+      "unit": "g",
+      "confidenceRange95Percent": { "min": 10.91, "max": 17.03 },
+      "standardDeviation": 7.8
+    },
+    "carbs": {
+      "value": 51.0,
+      "unit": "g",
+      "confidenceRange95Percent": { "min": 44.3, "max": 58.58 },
+      "standardDeviation": 18.22
+    }
+  },
+  "category": { "name": "baked_beans", "probability": 0.6501713364241081 },
+  "recipes": [
+    {
+      "id": 532358,
+      "title": "The Best BBQ Baked Beans and 5 More Baked Beans to Love",
+      "imageType": "jpg",
+      "url": "http://www.foodiecrush.com/2014/06/the-best-bbq-baked-beans/"
+    },
+    {
+      "id": 420828,
+      "title": "Better Baked Beans",
+      "imageType": "jpg",
+      "url": "http://allrecipes.com/Recipe/Better-Baked-Beans/"
+    },
+    {
+      "id": 586449,
+      "title": "Baked Beans",
+      "imageType": "jpg",
+      "url": "http://www.culicurious.com/from-my-kitchen-baked-beans/"
+    },
+    {
+      "id": 16928,
+      "title": "Baked Beans",
+      "imageType": "jpg",
+      "url": "http://www.myrecipes.com/recipe/baked-beans-10000001060446/"
+    },
+    {
+      "id": 992566,
+      "title": "The Best Baked Beans",
+      "imageType": "jpg",
+      "url": "https://www.the-girl-who-ate-everything.com/the-best-baked-beans/"
+    },
+    {
+      "id": 604966,
+      "title": "Baked Beans",
+      "imageType": "jpg",
+      "url": "http://www.vickibensinger.com/2014/07/baked-beans.html"
+    },
+    {
+      "id": 1454803,
+      "title": "Baked Beans",
+      "imageType": "jpg",
+      "url": "https://www.julieseatsandtreats.com/baked-beans/"
+    },
+    {
+      "id": 497563,
+      "title": "Baked\" Beans",
+      "imageType": "jpg",
+      "url": "http://www.fortheloveofcooking.net/2012/10/baked-beans.html"
+    },
+    {
+      "id": 515003,
+      "title": "Baked Beans",
+      "imageType": "jpg",
+      "url": "http://www.motherthyme.com/2012/05/baked-beans.html"
+    }
+  ]
+}

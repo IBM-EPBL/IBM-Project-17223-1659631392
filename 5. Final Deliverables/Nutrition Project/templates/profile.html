@@ -21,7 +21,7 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="../static/home/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/profile.css">
 
     <title>IBM Profile</title>
     <link rel="icon" type="image/png" href="../static/images/icons/logo.ico"/>
@@ -52,23 +52,33 @@
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="{{ url_for('home') }}"><span>Home</span></a></li>
-                <li><a href="{{ url_for('upload') }}"><span>Upload</span></a></li>
-                <li class="active"><a href=""><span>Profile</span></a></li>
+                <li><a href="{{ url_for('uploader') }}"><span>Upload</span></a></li>
+                <li class="active"><a><span>Profile</span></a></li>
                 <li><a href="{{ url_for('logout') }}"><span>Logout</span></a></li>
               </ul>
             </nav>
           </div>
 
           <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
           </div>
+
         </div>
       </div>
       
     </header>
 
     <div class="hero" style="background-image: url('../static/images/Healthy_food.jpg'); filter: blur(2px); filter: brightness(50%);"></div>
-
-
+    
+    <div class="profilebox">
+      <h1>Welcome, {{ username }}</h1>
+      <br></br>
+      <h3>Email : {{ usermail }}</h3>
+      <h3>Phone Number :   -----------</h3>
+      <h3>Created on : {{ time }}</h3>
+      <br></br>
+      <button>Update Profile</button>
+    </div>
 
     <script src="../static/home/js/jquery-3.3.1.min.js"></script>
     <script src="../static/home/js/popper.min.js"></script>

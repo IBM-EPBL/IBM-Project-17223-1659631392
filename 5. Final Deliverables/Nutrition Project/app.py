@@ -44,22 +44,6 @@ def home():
       print("Error:", response.status_code, response.text)
     return render_template('index.html',todaysquote=jsonResponse[0]['quote'],author=jsonResponse[0]['author'])
 
-# @app.route("/upload",methods=['GET','POST'])
-# def upload():
-#     if 'email' not in session:
-#       return redirect(url_for('login'))
-#     if request.method == 'POST':
-#       imageurl = request.form['URloftheImage']
-#       if not imageurl:
-#         render_template('upload.html',error="fill url")
-#       url="https://api.spoonacular.com/food/images/analyze"
-#       API_KEY = "c6b26a53ad36401c969cff947ee122d7"
-#       res = requests.get(url,params={"imageUrl":imageurl,"apiKey":API_KEY})
-#       print(res,res.content)
-#       data = json.loads(res.content)
-#       return render_template('results.html', title="page", jsonfile=json.dumps(data))
-#     return render_template('upload.html')  
-
 @app.route("/login", methods=['GET','POST'])
 def login():
     error = ''
@@ -93,8 +77,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/register')
-@app.route("/register",methods=['GET','POST'])
+@app.route('/register',methods=['GET','POST'])
 def register():
   if request.method == 'POST':
     email = request.form['email']
@@ -138,31 +121,41 @@ def uploader():
     if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            try:
-              cos.upload_file(Filename=filename,Bucket='foodbucket',Key=file.filename)
-            except Exception as e:
-              print(Exception,e)
-            else:
-              print('File uploaded')
-              app.logger.info('File Uploaded')
+            # try:
+            #   time.sleep(1)
+            #   print(os.getcwd())
+            #   cos.upload_file(Filename=filename,Bucket='foodbucket',Key=file.filename)
+            # except Exception as e:
+            #   print(Exception,e)
+            # else:
+            #   print('File uploaded')
+            app.logger.info('File Uploaded')
             # return redirect(COS_ENDPOINT+"/foodbucket/"+file.filename)
-              imageurl = COS_ENDPOINT+"/foodbucket/"+file.filename
-              url = "https://api.spoonacular.com/food/images/analyze"
-              res = requests.get(url,params={"imageUrl":imageurl,"apiKey":FOOD_API_KEY})
-              print(res,res.content)
-              data = json.loads(res.content)
-              app.logger.info('Results Fetched')
-              return render_template('results.html', title="page", jsonfile=json.dumps(data))
+            imageurl = COS_ENDPOINT+"/foodbucket/"+file.filename
+            url = "https://api.spoonacular.com/food/images/analyze"
+            time.sleep(1)
+            res = requests.get(url,params={"imageUrl":imageurl,"apiKey":FOOD_API_KEY})
+            print(res,res.content)
+            data = json.loads(res.content)
+            app.logger.info('Results Fetched')
+            return render_template('results.html',image = imageurl , jsonfile=json.dumps(data), data=data)
             # return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
     app.logger.error('testing error log')
     return render_template('upload.html',error='Drag and drop a file or select add Image. TRIED')
   return render_template('upload.html',error='Drag and drop a file or select add Image.')
 
-@app.route('/profile')
+@app.route('/profile',methods=['GET','POST'])
 def profile():
   if 'email' not in session:
     return redirect(url_for('login'))
-  return render_template('profile.html')
+  email = session['email']
+  print(session['email'])
+  query = "SELECT * FROM users WHERE EMAIL=?"
+  stmt = ibm_db.prepare(connection, query)
+  ibm_db.bind_param(stmt,1,email)
+  ibm_db.execute(stmt)
+  isUser = ibm_db.fetch_assoc(stmt)
+  return render_template('profile.html',username=isUser['NAME'],usermail=isUser['EMAIL'],time=isUser['CREATED_ON'])
 
 @app.route('/logout')
 def logout():
