@@ -1,4 +1,4 @@
-# IBM Nutrtion Assistant Application
+# IBM Nutrition Assistant Application
 
 The team project contains the resources for Nutrtion Application Setup & Development Details
 
