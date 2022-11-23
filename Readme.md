@@ -16,8 +16,6 @@ The team project contains the resources for Nutrtion Application Setup & Develop
  4. IBM DB2 session Integration Done
  5. Nutrition API Integration Done
  6. Deployment In Progress
-## Definition of Testing
-  *Work in progress*
 
 ## Demonstration Video
 
