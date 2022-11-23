@@ -1,0 +1,17 @@
+.profilebox{
+    background: rgb(28 1 25);
+    color: aliceblue;
+    padding: 5%;
+    font-family: monospace;
+    height: 23%;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    position: absolute;
+    border-radius: 1%;
+}
+
+.quotebox h1{
+    font-family: 'Courier New', Courier, monospace  !important;
+    font-weight: bold;
+}
